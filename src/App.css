@@ -1,36 +1,45 @@
+body {
+  margin: 0;
+}
+
+.page {
+  display: flex;
+  align-items: stretch;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+  align-content: flex-start;
+  padding: 20px;
+}
+
 .content {
   background-image: linear-gradient(rgb(21, 46, 148), rgb(0, 0, 0));
   background-repeat: no-repeat;
-  /* Prevents the gradient from repeating */
   background-size: cover;
-  /* Stretches the gradient to cover the entire element */
 }
-
-img {
-  max-width: 6%;
-  height: auto;
-  position: fixed;
-
-}
-
 
 .sideBar {
-  border: 10px solid #000000;
-  height: 100%;
-  left: 0;
-  width: 10%;
+  width: 15%;
   color: #A9D6E5;
+  background-color: #000000;
   display: flex;
-  align-items: top;
-  justify-content: center;
-  background-color: rgb(0, 0, 0);
-  position: fixed;
-  top: 0;
-  z-index: -1;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.sideBar img {
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .bottomBar {
-  
   border: -1px solid #c6c6c6;
   height: 15%;
   position: absolute;
@@ -42,8 +51,18 @@ img {
   z-index: -2;
 }
 
+.projectLink {
+  height: 250px;
+  width: 250px;
+  border-radius: 20px;
+  transition: box-shadow 0.1s ease-in-out;
+}
 
-.projectLink1 {
+.projectLink:hover {
+  box-shadow: 0 0 60px rgba(0, 145, 255, 0.5);
+}
+
+/* .projectLink1 {
   padding-bottom: 15%;
   width: 20%;
   max-width: 250px;
@@ -137,4 +156,4 @@ img {
 
 .projectLink6:hover {
   box-shadow: 0 0 60px rgba(0, 145, 255, 0.5);
-}
+} */

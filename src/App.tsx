@@ -3,31 +3,31 @@ import logo from "./assets/Logobase.png"
 
 function App() {
   return (
-    <>
-      <div className="content">
-        <button className="projectLink1"></button>      
-        <button className="projectLink2"></button>
-        <button className="projectLink3"></button>        
-        <button className="projectLink4"></button>  
-        <button className="projectLink5"></button>  
-        <button className="projectLink6"></button>  
+    <div className="page">
 
-        <div className="bottomBar">
+      <div className="sideBar">
+        <img src={logo} alt="" />
+        text
+      </div>
 
-        </div>
-
-        <div className="sideBar">
-
-          <img src={logo} alt="" />
-         text
-        </div>
-
-        <div className="box">
-
-        </div>
+      <div className="box">
 
       </div>
-    </>
+
+      <div className="content">
+        <button className="projectLink"></button>
+        <button className="projectLink"></button>
+        <button className="projectLink"></button>
+        <button className="projectLink"></button>
+        <button className="projectLink"></button>
+        <button className="projectLink"></button>
+      </div>
+
+      {/* <div className="bottomBar">
+
+      </div> */}
+
+    </div>
   );
 }
 
