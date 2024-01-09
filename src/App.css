@@ -1,42 +1,140 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.content {
+  background-image: linear-gradient(rgb(21, 46, 148), rgb(0, 0, 0));
+  background-repeat: no-repeat;
+  /* Prevents the gradient from repeating */
+  background-size: cover;
+  /* Stretches the gradient to cover the entire element */
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+img {
+  max-width: 6%;
+  height: auto;
+  position: fixed;
+
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.sideBar {
+  border: 10px solid #000000;
+  height: 100%;
+  left: 0;
+  width: 10%;
+  color: #A9D6E5;
+  display: flex;
+  align-items: top;
+  justify-content: center;
+  background-color: rgb(0, 0, 0);
+  position: fixed;
+  top: 0;
+  z-index: -1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.bottomBar {
+  
+  border: -1px solid #c6c6c6;
+  height: 15%;
+  position: absolute;
+  bottom: -100%;
+  left: 0%;
+  color: #ffffff;
+  width: 100%;
+  background-color: #c6c6c6;
+  z-index: -2;
 }
 
-.card {
-  padding: 2em;
+
+.projectLink1 {
+  padding-bottom: 15%;
+  width: 20%;
+  max-width: 250px;
+  max-height: 250px;
+  position: absolute;
+  left: 15%;
+  top: 5%;
+  border-radius: 20px;
+  transition: box-shadow 0.1s ease-in-out;
 }
 
-.read-the-docs {
-  color: #888;
+.projectLink2 {
+  padding-bottom: 15%;
+  max-width: 250px;
+  max-height: 250px;
+  width: 20%;
+  position: absolute;
+  left: 40%;
+  top: 5%;
+  border-radius: 20px;
+  transition: box-shadow 0.1s ease-in-out;
+}
+
+.projectLink3 {
+  padding-bottom: 15%;
+  max-width: 250px;
+  max-height: 250px;
+  width: 20%;
+  position: absolute;
+  left: 65%;
+  top: 5%;
+  border-radius: 20px;
+  transition: box-shadow 0.1s ease-in-out;
+}
+
+.projectLink4 {
+  padding-bottom: 15%;
+  max-width: 250px;
+  max-height: 250px;
+  width: 20%;
+  position: absolute;
+  left: 15%;
+  top: 40%;
+  border-radius: 20px;
+  transition: box-shadow 0.1s ease-in-out;
+}
+
+.projectLink5 {
+  padding-bottom: 15%;
+  max-width: 250px;
+  max-height: 250px;
+  width: 20%;
+  position: absolute;
+  left: 40%;
+  top: 40%;
+  border-radius: 20px;
+  transition: box-shadow 0.1s ease-in-out;
+}
+
+.projectLink6 {
+  padding-bottom: 15%;
+  max-width: 250px;
+  max-height: 250px;
+  width: 20%;
+  position: absolute;
+  left: 65%;
+  top: 40%;
+  border-radius: 20px;
+  transition: box-shadow 0.1s ease-in-out;
+}
+
+.projectLink1:hover {
+  box-shadow: 0 0 60px rgba(0, 145, 255, 0.5);
+}
+
+.projectLink2:hover {
+  box-shadow: 0 0 60px rgba(0, 145, 255, 0.5);
+}
+
+.projectLink3:hover {
+  box-shadow: 0 0 60px rgba(0, 145, 255, 0.5);
+}
+
+.projectLink4:hover {
+  box-shadow: 0 0 60px rgba(0, 145, 255, 0.5);
+}
+
+.projectLink5:hover {
+  box-shadow: 0 0 60px rgba(0, 145, 255, 0.5);
+}
+
+.projectLink6:hover {
+  box-shadow: 0 0 60px rgba(0, 145, 255, 0.5);
 }
