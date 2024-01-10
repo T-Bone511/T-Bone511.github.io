@@ -1,5 +1,6 @@
 import './App.css';
-import logo from "./assets/Logobase.png"
+import logo from "./assets/logo.png"
+import WEEK1 from "./assets/WEEK1.png"
 
 function App() {
   return (
@@ -7,7 +8,9 @@ function App() {
 
       <div className="sideBar">
         <img src={logo} alt="" />
-        text
+        T-Bone's
+        <div></div>
+        52 Weeks of creation
       </div>
 
       <div className="box">
@@ -15,6 +18,12 @@ function App() {
       </div>
 
       <div className="content">
+
+        <img src={WEEK1} alt="Week1" />​​
+        <button className="projectLink"></button>
+        <button className="projectLink"></button>
+        <button className="projectLink"></button>
+        <button className="projectLink"></button>
         <button className="projectLink"></button>
         <button className="projectLink"></button>
         <button className="projectLink"></button>
@@ -23,9 +32,6 @@ function App() {
         <button className="projectLink"></button>
       </div>
 
-      {/* <div className="bottomBar">
-
-      </div> */}
 
     </div>
   );
