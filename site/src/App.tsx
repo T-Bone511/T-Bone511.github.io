@@ -17,6 +17,10 @@ function App() {
         T-Bone's
         <div></div>
         52 Weeks of creation
+        <div></div>
+        <a href="https://www.youtube.com/channel/UCZ538qR2wdO3RZqDvz45XxA">
+          My Youtube Channel
+        </a>
       </div>
 
       <div className="box"></div>
@@ -30,7 +34,7 @@ function App() {
               alt="Week1"
               onClick={() => handlePageChange("Week1")}
             />
-            ​​
+
             <button
               className="projectLink"
               onClick={() => handlePageChange("Week2")}
