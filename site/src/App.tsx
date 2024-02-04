@@ -1,7 +1,7 @@
 import "./App.css";
-import logo from "./assets/logo.png";
 import WEEK1 from "./assets/WEEK1.png";
 import React, { useState } from "react";
+import TLogo from "./assets/TLogo.png";
 
 function App() {
   const [page, setPage] = useState("home");
@@ -9,21 +9,34 @@ function App() {
   function handlePageChange(newPage: string) {
     setPage(newPage);
   }
-
   return (
     <div className="page">
-      <div className="sideBar">
-        <img src={logo} alt="" onClick={() => handlePageChange("home")} />
-        T-Bone's
-        <div></div>
-        52 Weeks of creation
-        <div></div>
-        <a href="https://www.youtube.com/channel/UCZ538qR2wdO3RZqDvz45XxA">
-          My Youtube Channel
-        </a>
+      <div className="topNav">
+        <img src={TLogo} className="logo"></img>
+        <div className="titusPersons">
+          Titus <div></div>
+          Persons
+        </div>
+        <div className="socialButtons">
+          <a href="https://www.youtube.com/channel/UCZ538qR2wdO3RZqDvz45XxA">
+            <i className="fa fa-youtube-play" aria-hidden="true"></i>
+          </a>
+          <a href="https://www.instagram.com/titus_persons/">
+            <i className="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://twitter.com/TitusPersons">
+            <i className="fa-brands fa-x-twitter"></i>
+          </a>
+        </div>
       </div>
 
-      <div className="box"></div>
+      {page === "home" && (
+        <div className="hero">
+          <div></div>
+          <p>52 Weeks of Creation</p>
+          <div></div>
+        </div>
+      )}
 
       <div className="content">
         {page === "home" && (
@@ -39,6 +52,15 @@ function App() {
               className="projectLink"
               onClick={() => handlePageChange("Week2")}
             ></button>
+            <button className="projectLink"></button>
+            <button className="projectLink"></button>
+            <button className="projectLink"></button>
+            <button className="projectLink"></button>
+            <button className="projectLink"></button>
+            <button className="projectLink"></button>
+            <button className="projectLink"></button>
+            <button className="projectLink"></button>
+            <button className="projectLink"></button>
             <button className="projectLink"></button>
             <button className="projectLink"></button>
             <button className="projectLink"></button>
