@@ -43,20 +43,6 @@ body {
   transform: scale(1.07);
 }
 
-
-
-#panel1 {
-  position: absolute;
-  left: -15%;
-  top: -36%;
-  border: 3px solid red;
-  width: 80px;
-  height: 80px;
-}
-#panel1:hover {
-  box-shadow: 2px 2px 2px#0e0e0e;
-}
-
 /* Container is fixed in the center of the screen */
 .container {
   position: fixed;
