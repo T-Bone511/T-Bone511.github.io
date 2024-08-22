@@ -1,7 +1,7 @@
 import "./App.css";
-import WEEK1 from "./assets/WEEK1.png";
 import React, { useState } from "react";
 import TLogo from "./assets/TLogo.png";
+import MusicPage from "./MusicPage"; // Import the MusicPage component
 
 function App() {
   const [page, setPage] = useState("home");
@@ -9,72 +9,70 @@ function App() {
   function handlePageChange(newPage: string) {
     setPage(newPage);
   }
+
   return (
-    <div className="page">
-      <div className="topNav">
-        <img src={TLogo} className="logo"></img>
-        <div className="titusPersons">
-          Titus <div></div>
-          Persons
-        </div>
-        <div className="socialButtons">
-          <a href="https://www.youtube.com/channel/UCZ538qR2wdO3RZqDvz45XxA">
-            <i className="fa fa-youtube-play" aria-hidden="true"></i>
-          </a>
-          <a href="https://www.instagram.com/titus_persons/">
-            <i className="fa-brands fa-instagram"></i>
-          </a>
-          <a href="https://twitter.com/TitusPersons">
-            <i className="fa-brands fa-x-twitter"></i>
-          </a>
-        </div>
+    <div className="page1">
+      <div id="main">
+        {page === "home" && (
+          <div className="container">
+            <div className="image-center">
+              <img
+                src={TLogo}
+                alt="Center Image"
+                style={{ width: "100%", height: "100%" }}
+              />
+            </div>
+            <div className="rotating-buttons">
+              <button
+                className="radial-button button1"
+                onClick={() => handlePageChange("Editting")}
+              >
+                Editting
+              </button>
+              <button
+                onClick={() => handlePageChange("Music")}
+                className="radial-button button2"
+              >
+                Music
+              </button>
+              <button
+                onClick={() => handlePageChange("VFX")}
+                className="radial-button button3"
+              >
+                VFX
+              </button>
+              <button
+                onClick={() => handlePageChange("Game Development")}
+                className="radial-button button4"
+              >
+                Game Development
+              </button>
+              <button
+                onClick={() => handlePageChange("Programing")}
+                className="radial-button button5"
+              >
+                Programing
+              </button>
+              <button
+                onClick={() => handlePageChange("Animation")}
+                className="radial-button button6"
+              >
+                3D Animation
+              </button>
+            </div>
+          </div>
+        )}
+        {page === "Music" && <MusicPage />}{" "}
+        {/* Render MusicPage component if page is "Music" */}
       </div>
 
-      {page === "home" && (
-        <div className="hero">
-          <div></div>
-          <p>52 Weeks of Creation</p>
-          <div></div>
-        </div>
-      )}
-
-      <div className="content">
-        {page === "home" && (
-          <>
-            <img
-              className="projectLink"
-              src={WEEK1}
-              alt="Week1"
-              onClick={() => handlePageChange("Week1")}
-            />
-
-            <button
-              className="projectLink"
-              onClick={() => handlePageChange("Week2")}
-            ></button>
-            <button className="projectLink"></button>
-            <button className="projectLink"></button>
-            <button className="projectLink"></button>
-            <button className="projectLink"></button>
-            <button className="projectLink"></button>
-            <button className="projectLink"></button>
-            <button className="projectLink"></button>
-            <button className="projectLink"></button>
-            <button className="projectLink"></button>
-            <button className="projectLink"></button>
-            <button className="projectLink"></button>
-            <button className="projectLink"></button>
-            <button className="projectLink"></button>
-            <button className="projectLink"></button>
-            <button className="projectLink"></button>
-            <button className="projectLink"></button>
-            <button className="projectLink"></button>
-            <button className="projectLink"></button>
-          </>
-        )}
-
-        {page === "Week1" && <div>Week1</div>}
-        {page === "Week2" && <div>Week2</div>}
+      <div id="navBar">
+        <img
+          src={TLogo}
+          id="navLogo"
+          alt="Nav Logo"
+          onClick={() => handlePageChange("home")}
+        />
       </div>
     </div>
   );

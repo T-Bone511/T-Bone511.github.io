@@ -7,191 +7,203 @@ body {
   display: inline-block;
 }
 
-.topNav {
-  display: flex;
-  align-items: center;
-  height: 75px;
-  width: 100%;
-  background-image: linear-gradient(rgba(6, 9, 20, 0.921), rgba(6, 9, 20, 0.63), rgba(255, 255, 0, 0));
-  position: fixed;
-  font-size: x-large;
-  color: #ffffff;
-  
-}
-
-.logo {
-  width: 50px;
-  margin-left: 10%;
-}
-
-.socialButtons {
-  display: flex;
-  gap: 15px;
-  margin-left: 50px;
-  color: #ffffff;
-
-}
-.socialButtons:hover {
-  size: 10%;
-
-}
-
-.titusPersons {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: large;
-  margin-left: 5px;
-}
-
-
-.hero {
+#main{
+  background-color: #0e0e0e;
   height: 100vh;
-  width: 100%;
-  position: static;
-  background-image: radial-gradient(rgb(10, 151, 202), #023E7D, #001233);
+  text-align: center;
+  color: aliceblue;
   display: flex;
   align-items: center;
-  justify-content: center;
+
+}
+
+#navBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-image: linear-gradient(rgba(0, 174, 255, 0.767), rgba(13, 51, 203, 0.789), rgba(8, 19, 29, 0) );
+  color: white;
+  padding: 10px;
   text-align: center;
-  font-size: 100px;
-  color: #ffffff;
-  font-family: sans-serif;
+  z-index: 1000;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }
-
-.content {
-  flex: 1;
+#navLogo {
   display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: flex-start;
-  align-content: flex-start;
-  padding: 75px;
-  
+  justify-content: center;
+  align-items: center;
+  height: 5vh;
+  border-radius: 50%;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.658);
 
 }
-
-.content {
-  background-image: linear-gradient(rgb(0, 0, 0), #0466C8);
-  background-repeat: no-repeat;
-  background-size: cover;
+#navLogo:hover  {
+  transform: scale(1.07);
 }
 
-.projectLink {
-  height: 200px;
-  width: 200px;
-  border-radius: 20px;
-  transition: box-shadow 0.2s ease-in-out;
-  cursor: pointer;
-}
 
-.projectLink:hover {
-  box-shadow: 0 0 50px rgb(0, 145, 255);
-  background-color: #ffffff;
-}
 
-.content img {
-  height: 200px;
-  width: 200px;
-  border-radius: 20px;
-  transition: box-shadow 0.2s ease-in-out;
-  cursor: pointer;
-}
-
-.content img:hover {
-  box-shadow: 0 0 50px rgb(0, 145, 255);
-  background-color: #ffffff;
-}
-/* .projectLink1 {
-  padding-bottom: 15%;
-  width: 20%;
-  max-width: 250px;
-  max-height: 250px;
+#panel1 {
   position: absolute;
-  left: 15%;
-  top: 5%;
-  border-radius: 20px;
-  transition: box-shadow 0.1s ease-in-out;
+  left: -15%;
+  top: -36%;
+  border: 3px solid red;
+  width: 80px;
+  height: 80px;
+}
+#panel1:hover {
+  box-shadow: 2px 2px 2px#0e0e0e;
 }
 
-.projectLink2 {
-  padding-bottom: 15%;
-  max-width: 250px;
-  max-height: 250px;
-  width: 20%;
+/* Container is fixed in the center of the screen */
+.container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 335px;
+  /* Adjust based on your image size */
+  height: 335px;
+  /* Adjust based on your image size */
+  transform: translate(-50%, -50%);
+}
+
+/* Image is centered within the container */
+.image-center {
+ position: absolute;
+ border-radius: 50%;
+ transform: scale(.35);
+ position: relative;
+}
+.image-center::after, .card::before {
+  content: '';
   position: absolute;
-  left: 40%;
-  top: 5%;
-  border-radius: 20px;
-  transition: box-shadow 0.1s ease-in-out;
+  background-image: conic-gradient(rgb(0, 17, 255), rgb(0, 68, 255), rgb(0, 174, 255), blue, rgb(0, 174, 255), blue);
+  height: 100%;
+  width: 100%;
+  top: 102.3%;
+  left: 103%;
+  translate: -50% -50%;
+  z-index: -1;
+  border-radius: 50%;
+  padding: 10px;
+  animation: counter-rotate 30s linear infinite;
 }
-
-.projectLink3 {
-  padding-bottom: 15%;
-  max-width: 250px;
-  max-height: 250px;
-  width: 20%;
+.image-center::before {
+  content: '';
   position: absolute;
-  left: 65%;
-  top: 5%;
-  border-radius: 20px;
-  transition: box-shadow 0.1s ease-in-out;
+  background-image: conic-gradient(rgb(0, 17, 255), rgb(0, 68, 255), rgb(0, 174, 255), blue, rgb(0, 174, 255), blue);
+  height: 100%;
+  width: 100%;
+  top: 102.3%;
+  left: 103%;
+  translate: -50% -50%;
+  z-index: -1;
+  border-radius: 50%;
+  padding: 10px;
+  filter: blur(1.9rem);
+  animation: counter-rotate 30s linear infinite;
 }
 
-.projectLink4 {
-  padding-bottom: 15%;
-  max-width: 250px;
-  max-height: 250px;
-  width: 20%;
+/* Rotating buttons container is centered and rotates around the image */
+.rotating-buttons {
   position: absolute;
-  left: 15%;
-  top: 40%;
-  border-radius: 20px;
-  transition: box-shadow 0.1s ease-in-out;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  animation: rotate 30s linear infinite;
+  box-shadow: 12px 12px 12px  rgba(0, 0, 0, 0.632), -12px -12px 12px  rgb(0, 0, 0), inset -12px -12px 12px rgba(10, 10, 10, 0.292), inset 12px 12px 12px rgba(46, 46, 46, 0.292);
+  border-radius: 50%;
+
 }
 
-.projectLink5 {
-  padding-bottom: 15%;
-  max-width: 250px;
-  max-height: 250px;
-  width: 20%;
+/* Individual button styles */
+.radial-button {
   position: absolute;
-  left: 40%;
-  top: 40%;
-  border-radius: 20px;
-  transition: box-shadow 0.1s ease-in-out;
+  width: 100px;
+  /* Adjust button size */
+  height: 100px;
+  border-radius:50%;
+  text-align: center;
+  transform-origin: center center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: 900;
+  background-color: rgba(9, 62, 255, 0.408);
+  color: aliceblue;
+  border: 3px solid rgba(61, 61, 61, 0.459);
+  backdrop-filter: blur(2px);
 }
 
-.projectLink6 {
-  padding-bottom: 15%;
-  max-width: 250px;
-  max-height: 250px;
-  width: 20%;
-  position: absolute;
-  left: 65%;
-  top: 40%;
-  border-radius: 20px;
-  transition: box-shadow 0.1s ease-in-out;
+.radial-button:hover {
+  background-color: #0540ff4d;;
+  box-shadow: 3px 3px 5px rgb(0, 102, 255)3px -3px 5px  rgb(0, 17, 255);
+}
+/* Positioning each button around the image */
+.button1 {
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
 }
 
-.projectLink1:hover {
-  box-shadow: 0 0 60px rgba(0, 145, 255, 0.5);
+.button2 {
+  top: 25%;
+  left: 5%;
+  transform: translate(-50%, -50%) rotate(0deg);
 }
 
-.projectLink2:hover {
-  box-shadow: 0 0 60px rgba(0, 145, 255, 0.5);
+.button3 {
+  top: 75%;
+  left: 5%;
+  transform: translate(-50%, -50%) rotate(0deg);
 }
 
-.projectLink3:hover {
-  box-shadow: 0 0 60px rgba(0, 145, 255, 0.5);
+.button4 {
+  top: 25%;
+  left: 95%;
+  transform: translate(-50%, -50%) rotate(0deg);
 }
 
-.projectLink4:hover {
-  box-shadow: 0 0 60px rgba(0, 145, 255, 0.5);
+.button5 {
+  top: 75%;
+  left: 95%;
+  transform: translate(-50%, -50%) rotate(0deg);
 }
 
-.projectLink5:hover {
-  box-shadow: 0 0 60px rgba(0, 145, 255, 0.5);
+.button6 {
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
 }
 
-.projectLink6:hover {
-  box-shadow: 0 0 60px rgba(0, 145, 255, 0.5);
-} */
+/* Animation to rotate the buttons */
+@keyframes rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.rotating-buttons .radial-button {
+  animation: counter-rotate 30s linear infinite;
+}
+
+/* Counter-rotation to keep buttons upright */
+@keyframes counter-rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
