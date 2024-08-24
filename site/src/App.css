@@ -1,194 +1,136 @@
 body {
+  font-family: Arial, sans-serif;
   margin: 0;
+  padding: 0;
+  background-color: #ffffff;
 }
 
-.page {
-  min-height: 100vh;
-  display: inline-block;
+nav {
+  background-image: linear-gradient(#0466C8,#001233);
+  padding: .2em;
 }
 
-#main{
-  background-color: #0e0e0e;
-  height: 100vh;
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 5px;
+}
+
+nav ul li button {
+  background-color: #023E7D;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+nav ul li button:hover {
+  background-color: #0353A4;
+}
+
+header {
+  background-color: #007acc;
+  color: rgb(255, 255, 255);
+  padding: 2em;
   text-align: center;
-  color: aliceblue;
-  display: flex;
-  align-items: center;
+}
+
+main {
+  background-color: #151320;
+    height: 100vh;
+    display: grid;
+    place-items: center center;
+    font-family: 'Poppins', sans-serif;
+}
+
+#home {
+  display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    padding: 20px;
+    grid-gap: 40px;
 
 }
 
-#navBar {
-  position: fixed;
+body {
+  background-color: #151320;
+  height: 100vh;
+  display: grid;
+  place-items: center center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  padding: 20px;
+  grid-gap: 40px;
+}
+
+.card {
+  background-color: #1c1b29;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.18);
+}
+
+.container {
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+}
+
+img {
+  width: 100%;
+  display: block;
+  border-radius: 20px 20px 0 0;
+}
+
+.container:after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  background-image: linear-gradient(rgba(0, 174, 255, 0.767), rgba(13, 51, 203, 0.789), rgba(8, 19, 29, 0) );
-  color: white;
-  padding: 10px;
-  text-align: center;
-  z-index: 1000;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
-#navLogo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 5vh;
-  border-radius: 50%;
-  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.658);
-
-}
-#navLogo:hover  {
-  transform: scale(1.07);
+  border-radius: 20px 20px 0 0;
+  opacity: 0.7;
 }
 
-/* Container is fixed in the center of the screen */
-.container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 335px;
-  /* Adjust based on your image size */
-  height: 335px;
-  /* Adjust based on your image size */
-  transform: translate(-50%, -50%);
+.card1>.container:after {
+  background-image: linear-gradient(135deg,
+      #0000d90f,
+      #00d0ff34);
 }
 
-/* Image is centered within the container */
-.image-center {
- position: absolute;
- border-radius: 50%;
- transform: scale(.7
- );
- position: relative;
-}
-.image-center::after, .card::before {
-  content: '';
-  position: absolute;
-  background-image: conic-gradient(rgb(0, 17, 255), rgb(0, 68, 255), rgb(0, 174, 255), blue, rgb(0, 174, 255), blue);
-  height: 100%;
-  width: 100%;
-  top: 102.3%;
-  left: 103%;
-  translate: -50% -50%;
-  z-index: -1;
-  border-radius: 50%;
-  padding: 10px;
-  animation: counter-rotate 30s linear infinite;
-}
-.image-center::before {
-  content: '';
-  position: absolute;
-  background-image: conic-gradient(rgb(0, 17, 255), rgb(0, 68, 255), rgb(0, 174, 255), blue, rgb(0, 174, 255), blue);
-  height: 100%;
-  width: 100%;
-  top: 102.3%;
-  left: 103%;
-  translate: -50% -50%;
-  z-index: -1;
-  border-radius: 50%;
-  padding: 10px;
-  filter: blur(1.9rem);
-  animation: counter-rotate 30s linear infinite;
+.card2>.container:after {
+  background-image: linear-gradient(135deg,
+      #0b365c90,
+      #42ffdb);
 }
 
-/* Rotating buttons container is centered and rotates around the image */
-.rotating-buttons {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 200%;
-  height: 200%;
-  transform: translate(-50%, -50%);
-  animation: rotate 30s linear infinite;
-  box-shadow: 12px 12px 12px  rgba(0, 0, 0, 0.632), -12px -12px 12px  rgb(0, 0, 0), inset -12px -12px 12px rgba(10, 10, 10, 0.292), inset 12px 12px 12px rgba(46, 46, 46, 0.292);
-  border-radius: 50%;
-
+.card3>.container:after {
+  background-image: linear-gradient(135deg,
+      #ffab1d,
+      #f8501c);
 }
 
-/* Individual button styles */
-.radial-button {
-  position: absolute;
-  width: 200px;
-  /* Adjust button size */
-  height: 200px;
-  border-radius:50%;
-  text-align: center;
-  transform-origin: center center;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-weight: 900;
-  font-size: x-large;
-  background-color: rgba(9, 62, 255, 0.408);
-  color: aliceblue;
-  border: 3px solid rgba(61, 61, 61, 0.459);
-  backdrop-filter: blur(2px);
+.details {
+  padding: 20px 10px;
 }
 
-.radial-button:hover {
-  background-color: #0540ff4d;;
-  box-shadow: 3px 3px 5px rgb(0, 102, 255)3px -3px 5px  rgb(0, 17, 255);
-}
-/* Positioning each button around the image */
-.button1 {
-  top: 0%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(0deg);
-
+.details>h3 {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 18px;
+  margin: 10px 0 15px 0;
 }
 
-.button2 {
-  top: 25%;
-  left: 5%;
-  transform: translate(-50%, -50%) rotate(0deg);
-}
-
-.button3 {
-  top: 75%;
-  left: 5%;
-  transform: translate(-50%, -50%) rotate(0deg);
-}
-
-.button4 {
-  top: 25%;
-  left: 95%;
-  transform: translate(-50%, -50%) rotate(0deg);
-}
-
-.button5 {
-  top: 75%;
-  left: 95%;
-  transform: translate(-50%, -50%) rotate(0deg);
-}
-
-.button6 {
-  top: 100%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(0deg);
-}
-
-/* Animation to rotate the buttons */
-@keyframes rotate {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
-
-.rotating-buttons .radial-button {
-  animation: counter-rotate 30s linear infinite;
-}
-
-/* Counter-rotation to keep buttons upright */
-@keyframes counter-rotate {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-
-  to {
-    transform: translate(-50%, -50%) rotate(-360deg);
-  }
+.details>p {
+  color: #a0a0a0;
+  font-size: 15px;
+  line-height: 30px;
+  font-weight: 400;
 }
