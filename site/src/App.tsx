@@ -1,10 +1,10 @@
 import "./App.css";
 import React, { useState } from "react";
 import whoamiImage from "./assets/whoamiImage.jpg";
-import singapore from "./assets/singapore.jpg";
 import recordPlayer from "./assets/recordPlayer.jpg";
 import bbimage from "./assets/bbimage.png";
 import wallpapap from "./assets/wallpapap.png";
+import Programming from "./assets/Programming.png";
 
 function App() {
   const [page, setPage] = useState("home");
@@ -20,21 +20,17 @@ function App() {
           <li>
             <button onClick={() => handlePageChange("home")}>Home</button>
           </li>
-          <li>
-            <button onClick={() => handlePageChange("about")}>About</button>
-          </li>
-          <li>
-            <button onClick={() => handlePageChange("contact")}>Contact</button>
-          </li>
         </ul>
       </nav>
 
       <main>
-        <br></br>
         {page === "home" && (
           <section id="home">
             <div className="cards">
-              <div className="card card1">
+              <div
+                className="card card1"
+                onClick={() => handlePageChange("whoami?")}
+              >
                 <div className="container">
                   <img src={whoamiImage} alt="T-Bone" />
                 </div>
@@ -42,14 +38,14 @@ function App() {
                   <h3>whoami?</h3>
                   <p>
                     Greetings, programs! I'm Titus Persons, aka T-Bone. I'm a 3D
-                    artist, game dev, musician, and a programmer, I fuse
-                    creativity with tech to craft immersive experiences. Explore
-                    my world and see where my passion for creative technology
-                    takes me.
+                    artist, game dev, musician, a programmer, and much more!
                   </p>
                 </div>
               </div>
-              <div className="card card2">
+              <div
+                className="card card2"
+                onClick={() => handlePageChange("Music")}
+              >
                 <div className="container">
                   <img src={recordPlayer} alt="recordPlayer" />
                 </div>
@@ -62,9 +58,12 @@ function App() {
                   </p>
                 </div>
               </div>
-              <div className="card card3">
+              <div
+                className="card card3"
+                onClick={() => handlePageChange("Programming")}
+              >
                 <div className="container">
-                  <img src={singapore} alt="Singapore" />
+                  <img src={Programming} alt="Programming" />
                 </div>
                 <div className="details">
                   <h3>Programing</h3>
@@ -74,7 +73,10 @@ function App() {
                   </p>
                 </div>
               </div>
-              <div className="card card4">
+              <div
+                className="card card4"
+                onClick={() => handlePageChange("GameDevelopment")}
+              >
                 <div className="container">
                   <img src={bbimage} alt="VideoGame" />
                 </div>
@@ -86,7 +88,10 @@ function App() {
                   </p>
                 </div>
               </div>
-              <div className="card card5">
+              <div
+                className="card card5"
+                onClick={() => handlePageChange("3DArtistry")}
+              >
                 <div className="container">
                   <img src={wallpapap} alt="Blender" />
                 </div>
@@ -101,16 +106,29 @@ function App() {
             </div>
           </section>
         )}
-        {page === "about" && (
+        {page === "whoami?" && <section id="whoami">hello</section>}
+        {page === "Music" && (
           <section>
-            <h2>About Page</h2>
-            <p>This is the about page.</p>
+            <h2>MUSIC</h2>
+            <p>This is the music page.</p>
           </section>
         )}
-        {page === "contact" && (
+        {page === "Programming" && (
           <section>
-            <h2>Contact Page</h2>
-            <p>This is the contact page.</p>
+            <h2>MUSIC</h2>
+            <p>This is the music page.</p>
+          </section>
+        )}
+        {page === "GameDevelopment" && (
+          <section>
+            <h2>MUSIC</h2>
+            <p>This is the music page.</p>
+          </section>
+        )}
+        {page === "3DArtistry" && (
+          <section>
+            <h2>MUSIC</h2>
+            <p>This is the music page.</p>
           </section>
         )}
       </main>
