@@ -74,8 +74,7 @@ function App() {
         </form>
       ) : (
         <div className="terminal">
-          <div className="terminal-line">Welcome, {name}. Access granted.</div>
-          <div className="terminal-line">Loading portfolio...</div>
+          {/* Removed the "Access granted" and "Loading portfolio" lines */}
           <PortfolioPage name={name} />
         </div>
       )}
@@ -85,9 +84,15 @@ function App() {
 
 function PortfolioPage({ name }: { name: string }) {
   return (
-    <div className="portfolio">
-      <div className="terminal-line">[Portfolio page for {name} here]</div>
-      {/* Add your personal/portfolio content here */}
+    <div className="portfolio-page">
+      <div className="portfolio-container">
+        <div className="top-left">HELLO</div>
+        <div className="top-middle">HELLO</div>
+        <div className="top-right">HELLO</div>
+        <div className="bottom-left">HELLO</div>
+        <div className="bottom-middle">HELLO</div>
+        <div className="bottom-right">HELLO</div>
+      </div>
     </div>
   );
 }

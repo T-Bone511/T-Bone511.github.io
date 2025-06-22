@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terminal Login</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="terminal-container">
+        <form id="terminal-form" class="terminal">
+            <div class="terminal-line">
+                <span id="prompt">whoami:</span>
+                <input id="terminal-input" value="" autofocus type="text" autocomplete="off" />
+            </div>
+            <div id="error-message" class="error"></div>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('terminal-form');
+        const promptSpan = document.getElementById('prompt');
+        const input = document.getElementById('terminal-input');
+        const errorMessage = document.getElementById('error-message');
+
+        let currentState = 'name';
+        const correctPassword = 'letmein';
+        let userName = '';
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const command = input.value.trim();
+            errorMessage.textContent = '';
+
+            if (currentState === 'name') {
+                if (command === '') {
+                    errorMessage.textContent = 'Please enter your name.';
+                    input.value = '';
+                    return;
+                }
+                userName = command;
+                promptSpan.textContent = 'password:';
+                input.value = '';
+                currentState = 'password';
+            } else if (currentState === 'password') {
+                if (command === correctPassword) {
+                    window.location.href = 'portfolio.html';
+                } else if (command === 'art') {
+                    window.location.href = 'pixel-art.html';
+                } else {
+                    errorMessage.textContent = 'Incorrect password. Try again.';
+                    input.value = '';
+                }
+            }
+        });
+
+        input.focus();
+        document.addEventListener('click', () => {
+            input.focus();
+        });
+    </script>
+</body>
+
+</html>
