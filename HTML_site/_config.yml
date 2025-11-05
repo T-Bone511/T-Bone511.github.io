@@ -1,0 +1,11 @@
+# Jekyll configuration to exclude problematic directories
+exclude:
+  - node_modules
+  - package.json
+  - package-lock.json
+  - server.js
+  - railway.json
+  - vercel.json
+  - README.md
+  - DEPLOYMENT.md
+
