@@ -1,126 +1,458 @@
-body {
-    background: #010409;
-    color: #00ccff;
-    font-family: "Courier New", Courier, monospace;
+* {
     margin: 0;
     padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-
-.terminal-container {
-    width: 100vw;
-    max-width: none;
-    height: 100vh;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     box-sizing: border-box;
-    background: none;
 }
 
-/* This .terminal class is ONLY for the login page's form */
-.terminal {
-    background: #0a2239;
-    border: 3px solid #00ccff;
-    box-shadow: 0 0 32px 4px #00ccff44, 0 2px 24px 0 #010409;
-    border-radius: 12px;
-    padding: 32px 28px;
-    font-size: 1.2em;
-    line-height: 1.5em;
+html, body {
     width: 100%;
-    max-width: 400px;
-    min-height: 200px;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: box-shadow 0.3s;
-    text-align: center;
-    color: #00ccff;
+    height: 100%;
+    overflow: hidden;
 }
 
-.terminal:focus-within {
-    box-shadow: 0 0 48px 8px #00ccff66, 0 2px 32px 0 #010409;
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
 }
 
-.terminal-line {
-    margin-bottom: 18px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* Stars */
+#stars, #stars2, #stars3 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    background: transparent;
 }
 
-#prompt {
-    color: #00ccff;
-    font-weight: bold;
-    margin-right: 12px;
-    font-size: 1.1em;
-    letter-spacing: 1px;
-    text-shadow: 0 0 6px #00ccff44;
+#stars {
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    animation: animStar 50s linear infinite;
+    transform-origin: 50% 100%;
 }
 
-input[type="text"],
-input[type="password"] {
-    background: #0a2239;
-    color: #00ccff;
-    border: 2px solid #00ccff;
-    border-radius: 6px;
-    font-family: "Courier New", Courier, monospace;
+#stars::after {
+    content: " ";
+    position: absolute;
+    bottom: 2000px;
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    box-shadow: inherit;
+}
+
+#stars2 {
+    width: 2px;
+    height: 2px;
+    background: transparent;
+    animation: animStar 100s linear infinite;
+    transform-origin: 50% 100%;
+}
+
+#stars2::after {
+    content: " ";
+    position: absolute;
+    bottom: 2000px;
+    width: 2px;
+    height: 2px;
+    background: transparent;
+    box-shadow: inherit;
+}
+
+#stars3 {
+    width: 3px;
+    height: 3px;
+    background: transparent;
+    animation: animStar 150s linear infinite;
+    transform-origin: 50% 100%;
+}
+
+#stars3::after {
+    content: " ";
+    position: absolute;
+    bottom: 2000px;
+    width: 3px;
+    height: 3px;
+    background: transparent;
+    box-shadow: inherit;
+}
+
+@keyframes animStar {
+    from {
+        transform: translateY(0px) scale(1);
+    }
+    to {
+        transform: translateY(-2000px) scale(2);
+    }
+}
+
+/* Cards */
+.card {
+    position: absolute;
+    max-width: 300px;
+    padding: 24px;
+    border-radius: 16px;
+    backdrop-filter: blur(20px);
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset,
+        0 0 40px rgba(59, 130, 246, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 10;
+    color: #fff;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 16px;
+    background: linear-gradient(
+        135deg,
+        rgba(59, 130, 246, 0.6),
+        rgba(147, 197, 253, 0.4),
+        rgba(59, 130, 246, 0.6)
+    );
+    background-size: 200% 200%;
+    animation: borderGlow 3s ease infinite;
+    z-index: -1;
+    filter: blur(8px);
+    opacity: 0.7;
+}
+
+@keyframes borderGlow {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+        0 12px 48px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.2) inset,
+        0 0 60px rgba(59, 130, 246, 0.5);
+}
+
+.card:hover::before {
+    opacity: 1;
+    filter: blur(12px);
+}
+
+.card h2 {
+    font-size: 1.5em;
+    margin-bottom: 12px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.card p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    font-size: 0.95em;
+}
+
+/* WhoAmI Card Styling */
+.card-1 h2 {
+    font-size: 1.8em;
+    margin-bottom: 16px;
+}
+
+.whoami-name {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+}
+
+.whoami-aka {
     font-size: 1em;
-    outline: none;
-    width: 70%;
-    padding: 8px 12px;
-    margin-left: 4px;
-    box-shadow: 0 0 8px #00ccff22 inset;
-    transition: border 0.2s, box-shadow 0.2s;
+    color: rgba(147, 197, 253, 0.9);
+    margin: 0 0 16px 0;
+    font-style: italic;
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus {
-    border: 2px solid #33e6ff;
-    box-shadow: 0 0 16px #00ccff55;
+.whoami-bio {
+    font-size: 1em;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+    line-height: 1.6;
 }
 
-#error-message {
-    color: #ff3366;
-    font-weight: bold;
-    margin-top: 10px;
-    text-shadow: 0 0 4px #ff336655;
-    letter-spacing: 1px;
-    min-height: 1.5em;
-    text-align: center;
+/* Instagram container */
+.instagram-container {
+    margin-top: 16px;
 }
 
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: auto 2fr 1fr 1fr;
-    gap: 20px;
-    width: 90vw;
-    max-width: 1200px;
-    height: 90vh;
-    margin: 0 auto;
+.instagram-media-wrapper {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
 }
 
-.box {
-    border: 4px solid #00ccff;
-    background: #0a2239;
-    border-radius: 6px;
-    box-shadow: 0 0 24px 4px #00ccff44, 0 2px 12px 0 #010409;
-    color: #00ccff;
+.instagram-media-wrapper img,
+.instagram-media-wrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    aspect-ratio: 1;
 }
 
-.box1 { grid-column: 1 / 2; grid-row: 1 / 3; }
-.box2 { grid-column: 1 / 2; grid-row: 3 / 5; }
-.box3 { grid-column: 2 / 3; grid-row: 1 / 2; height: 60px; min-height: 0; max-height: 80px; display: flex; align-items: center; justify-content: center; font-size: 2.5em; font-weight: bold; letter-spacing: 2px; text-align: center; }
-.box4 { grid-column: 2 / 3; grid-row: 2 / 4; }
-.box5 { grid-column: 2 / 3; grid-row: 4 / 5; }
-.box6 { grid-column: 3 / 4; grid-row: 1 / 5; }
+.instagram-media-wrapper iframe {
+    width: 100%;
+    min-height: 600px;
+    border-radius: 12px;
+    border: none;
+    background: transparent;
+}
+
+.instagram-placeholder {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85em;
+    padding: 20px;
+    font-style: italic;
+}
+
+/* Positioning cards at different spots */
+.card-1 {
+    top: 20%;
+    left: 5%;
+    z-index: 2;
+}
+
+.card-2 {
+    top: 25%;
+    right: 10%;
+    z-index: 3;
+}
+
+.card-3 {
+    top: 70%;
+    left: 15%;
+    z-index: 1;
+    transform: rotate(-2deg);
+}
+
+.card-3:hover {
+    transform: rotate(0deg) translateY(-4px);
+}
+
+.card-4 {
+    bottom: 12%;
+    right: 8%;
+    z-index: 2;
+    transform: rotate(1deg);
+}
+
+.card-4:hover {
+    transform: rotate(0deg) translateY(-4px);
+}
+
+/* Game link button */
+.game-link-container {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.game-play-button {
+    display: block;
+    width: 100%;
+    padding: 16px 24px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(147, 197, 253, 0.2));
+    border: 1px solid rgba(59, 130, 246, 0.5);
+    border-radius: 12px;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.game-play-button:hover {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.5), rgba(147, 197, 253, 0.3));
+    border-color: rgba(59, 130, 246, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.game-play-button span {
+    display: inline-block;
+}
+
+.card-5 {
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%) rotate(-1deg);
+    z-index: 1;
+}
+
+.card-5:hover {
+    transform: translateX(-50%) rotate(0deg) translateY(-4px);
+}
+
+/* Project container */
+.project-container {
+    margin-top: 16px;
+    width: 100%;
+}
+
+.project-link {
+    display: block;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.project-link:hover {
+    transform: scale(1.02);
+}
+
+.project-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.project-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    padding: 16px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-link:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-link-text {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9em;
+    display: block;
+}
+
+/* Audio player */
+.audio-player-container {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.audio-player-container audio {
+    width: 100%;
+    height: 40px;
+    outline: none;
+}
+
+/* Custom audio player styling */
+.audio-player-container audio::-webkit-media-controls-panel {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+}
+
+.audio-player-container audio::-webkit-media-controls-play-button {
+    background-color: rgba(59, 130, 246, 0.8);
+    border-radius: 50%;
+}
+
+.audio-player-container audio::-webkit-media-controls-play-button:hover {
+    background-color: rgba(59, 130, 246, 1);
+}
+
+.audio-player-container audio::-webkit-media-controls-current-time-display,
+.audio-player-container audio::-webkit-media-controls-time-remaining-display {
+    color: rgba(255, 255, 255, 0.9);
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.audio-player-container audio::-webkit-media-controls-timeline {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+}
+
+.audio-player-container audio::-webkit-media-controls-volume-slider {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+}
+
+.audio-player-container audio::-webkit-media-controls-mute-button {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .card {
+        max-width: 250px;
+        padding: 20px;
+    }
+
+    .card-1 {
+        top: 10%;
+        left: 5%;
+    }
+
+    .card-2 {
+        top: 15%;
+        right: 5%;
+    }
+
+    .card-3 {
+        top: 55%;
+        left: 5%;
+    }
+
+    .card-4 {
+        bottom: 10%;
+        right: 5%;
+    }
+
+    .card-5 {
+        top: 35%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .card-5:hover {
+        transform: translateX(-50%) translateY(-4px);
+    }
+}

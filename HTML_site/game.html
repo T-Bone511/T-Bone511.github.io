@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Play My Game</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .game-page-container {
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .unity-game-wrapper {
+            width: 100%;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        #unity-canvas {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .unity-loading {
+            padding: 40px;
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .unity-loading p {
+            margin: 10px 0;
+        }
+
+        .loading-progress {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+
+        .loading-progress-bar {
+            height: 100%;
+            background: rgba(59, 130, 246, 0.8);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-page-container">
+        <a href="index.html" class="back-button">← Back to Home</a>
+        
+        <div class="unity-game-wrapper">
+            <canvas id="unity-canvas"></canvas>
+            <div class="unity-loading" id="unity-loading">
+                <p>Loading game...</p>
+                <div class="loading-progress">
+                    <div class="loading-progress-bar" id="loading-progress-bar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Unity WebGL Loader
+        function loadUnityGame() {
+            // Unity build folder path - your files use "GAME" prefix
+            const buildUrl = "assets/UnityGame/";
+            const loaderUrl = buildUrl + "GAME.loader.js";
+            
+            // Try with .br extension first (compressed), Unity loader will handle decompression
+            const config = {
+                dataUrl: buildUrl + "GAME.data.br",
+                frameworkUrl: buildUrl + "GAME.framework.js.br",
+                codeUrl: buildUrl + "GAME.wasm.br",
+                streamingAssetsUrl: "StreamingAssets",
+                companyName: "Titus Persons",
+                productName: "My Game",
+                productVersion: "1.0",
+            };
+            
+            console.log("Loading Unity game from:", buildUrl);
+            console.log("Config:", config);
+
+            const script = document.createElement('script');
+            script.src = loaderUrl;
+            script.onload = () => {
+                if (typeof createUnityInstance !== 'undefined') {
+                    const canvas = document.querySelector("#unity-canvas");
+                    const loadingDiv = document.querySelector("#unity-loading");
+                    const progressBar = document.querySelector("#loading-progress-bar");
+                    
+                    createUnityInstance(canvas, config, (progress) => {
+                        const percent = Math.round(progress * 100);
+                        progressBar.style.width = percent + '%';
+                        if (progress === 1) {
+                            setTimeout(() => {
+                                loadingDiv.style.display = 'none';
+                            }, 500);
+                        }
+                    }).then((instance) => {
+                        console.log("Unity game loaded successfully!");
+                        loadingDiv.style.display = 'none';
+                    }).catch((message) => {
+                        console.error("Unity game failed to load:", message);
+                        loadingDiv.innerHTML = '<p>Game failed to load. Check console for errors.</p><p style="font-size: 0.8em; margin-top: 10px;">Error: ' + message + '</p>';
+                    });
+                } else {
+                    document.querySelector("#unity-loading").innerHTML = '<p>Unity loader script loaded but createUnityInstance not found. Check Unity version.</p>';
+                }
+            };
+            script.onerror = () => {
+                document.querySelector("#unity-loading").innerHTML = '<p>Could not load Unity loader script. Check file path: ' + loaderUrl + '</p>';
+            };
+            document.body.appendChild(script);
+        }
+
+        function loadUnityLegacy(buildUrl) {
+            // For older Unity versions
+            const loaderUrl = buildUrl + "TemplateData/UnityLoader.js";
+            const script = document.createElement('script');
+            script.src = loaderUrl;
+            script.onload = () => {
+                if (typeof Unity !== 'undefined') {
+                    const gameInstance = UnityLoader.instantiate("unity-canvas", buildUrl + "Build.json", {
+                        onProgress: function(progress) {
+                            const percent = Math.round(progress * 100);
+                            document.querySelector("#loading-progress-bar").style.width = percent + '%';
+                        }
+                    });
+                    document.querySelector("#unity-loading").style.display = 'none';
+                }
+            };
+            script.onerror = () => {
+                document.querySelector("#unity-loading").innerHTML = '<p>Could not load legacy Unity loader. Check file path: ' + loaderUrl + '</p>';
+            };
+            document.body.appendChild(script);
+        }
+
+        function checkBuildFolder(buildUrl) {
+            // List common Unity build file patterns
+            const possibleFiles = [
+                buildUrl + "Build.loader.js",
+                buildUrl + "Build/Build.loader.js",
+                buildUrl + "TemplateData/UnityLoader.js",
+                buildUrl + "index.html"
+            ];
+            
+            let foundFiles = [];
+            Promise.all(possibleFiles.map(url => 
+                fetch(url, { method: 'HEAD' })
+                    .then(() => ({ url, exists: true }))
+                    .catch(() => ({ url, exists: false }))
+            )).then(results => {
+                const existing = results.filter(r => r.exists);
+                if (existing.length > 0) {
+                    document.querySelector("#unity-loading").innerHTML = 
+                        '<p>Found some Unity files but structure may be different.</p>' +
+                        '<p style="font-size: 0.8em;">Found: ' + existing.map(e => e.url).join(', ') + '</p>' +
+                        '<p style="font-size: 0.8em;">Please check your Unity build folder structure.</p>';
+                } else {
+                    document.querySelector("#unity-loading").innerHTML = 
+                        '<p>Unity game files not found in: ' + buildUrl + '</p>' +
+                        '<p style="font-size: 0.8em;">Make sure you\'ve built your Unity game to WebGL and copied all files to the assets/UnityGame/ folder.</p>';
+                }
+            });
+        }
+
+        // Load Unity game when page is ready
+        window.addEventListener('load', function() {
+            loadUnityGame();
+        });
+    </script>
+</body>
+</html>
+
