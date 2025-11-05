@@ -25,7 +25,7 @@ function App() {
     e.preventDefault();
     const trimmedInput = input.trim();
 
-    if (step === "whoami") {
+    if (step === "WHOAMI") {
       setName(trimmedInput);
       setInput("");
       setStep("password");
