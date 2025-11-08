@@ -18,6 +18,56 @@ body {
     position: relative;
 }
 
+/* Overlay Navigation */
+.overlay-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.nav-left,
+.nav-right {
+    display: flex;
+    gap: 30px;
+    pointer-events: auto;
+}
+
+.nav-link {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.nav-link:hover {
+    opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+    .overlay-nav {
+        padding: 15px 20px;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+    }
+
+    .nav-left,
+    .nav-right {
+        gap: 20px;
+    }
+}
+
 /* Sections */
 .section {
     width: 100%;
@@ -30,18 +80,160 @@ body {
 
 .section-1 {
     background: radial-gradient(ellipse at bottom, #07305f 0%, #090A0F 100%);
+    position: relative;
+}
+
+.typing-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 6rem;
+    font-weight: bold;
+    color: #ffffff;
+    font-family: 'Courier New', 'Courier', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    z-index: 100;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    text-align: center;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.typing-text::after {
+    content: '|';
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+@media (min-width: 1200px) {
+    .typing-text {
+        font-size: 8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .typing-text {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .typing-text {
+        font-size: 2rem;
+    }
 }
 
 .section-2 {
     background: #1a1a2e;
+    background-image: 
+        linear-gradient(to right, rgba(0, 81, 212, 0.3) 0%, transparent 20%, transparent 80%, rgba(0, 81, 212, 0.3) 100%),
+        linear-gradient(rgba(0, 157, 255, 0.288) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 157, 255, 0.288) 1px, transparent 1px);
+    background-size: 100% 100%, 50px 50px, 50px 50px;
+    animation: gridMove 1s linear infinite;
+    overflow: hidden;
+    position: relative;
+}
+
+@keyframes gridMove {
+    0% {
+        background-position: 0 0, 0 0, 0 0;
+    }
+    100% {
+        background-position: 0 0, 0 50px, 0 50px;
+    }
+}
+
+.section-2-content {
+    max-width: 800px;
+    padding: 0 40px;
+    text-align: center;
+    z-index: 1;
+    position: relative;
+    margin-top: -10vh;
+}
+
+.whoami-header {
+    font-size: 6rem;
+    font-weight: 900;
+    font-family: 'Arial Black', 'Helvetica Neue', Arial, sans-serif;
+    letter-spacing: 0.05em;
+    margin: 0 0 40px 0;
+    color: #ffffff;
+    text-transform: uppercase;
+    line-height: 1.1;
+}
+
+.whoami-summary {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .whoami-header {
+        font-size: 3.5rem;
+        margin-bottom: 30px;
+    }
+
+    .whoami-summary {
+        font-size: 1.1rem;
+    }
+
+    .section-2-content {
+        padding: 0 20px;
+    }
 }
 
 .section-3 {
     background: #16213e;
+    align-items: flex-start;
+    padding-top: 80px;
 }
 
 .section-4 {
     background: #0f3460;
+    align-items: flex-start;
+    padding-top: 80px;
+}
+
+.section-heading {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin: 0;
+    padding: 0 40px;
+    width: 100%;
+    text-align: left;
+    font-family: 'Arial Black', 'Helvetica Neue', Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+    .section-heading {
+        font-size: 2.5rem;
+        padding: 0 20px;
+    }
+
+    .section-3,
+    .section-4 {
+        padding-top: 60px;
+    }
 }
 
 /* Stars - only visible in section 1 */
