@@ -3,76 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
     <title>Website</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="stars"></div>
-    <div id="stars2"></div>
-    <div id="stars3"></div>
+    <section class="section section-1">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </section>
 
-    <div class="cards-container">
-        <div class="card card-1">
-            <h2>WhoAmI?</h2>
-            <p class="whoami-name">Titus Persons</p>
-            <p class="whoami-aka">AKA "The T-Bone" Online</p>
-            <p class="whoami-bio">I'm a 17-year-old Musician, Game Developer, and 3D Artist.</p>
-        </div>
+    <section class="section section-2"></section>
 
-        <div class="card card-2" data-instagram-profile="https://www.instagram.com/titus_persons/" data-instagram-url="https://www.instagram.com/p/DQrjpkMkcgH/" data-image-url="">
-            <h2>Latest Instagram Post</h2>
-            <div class="instagram-container">
-                <div class="instagram-media-wrapper">
-                    <img id="instagram-image" src="" alt="Instagram Post" style="display: none;">
-                    <video id="instagram-video" controls style="display: none;">
-                        Your browser does not support the video tag.
-                    </video>
-                    <iframe id="instagram-embed" src="" frameborder="0" scrolling="no" allowtransparency="true" style="display: none;"></iframe>
-                </div>
-                <p class="instagram-placeholder">Loading Instagram post...</p>
-            </div>
-        </div>
+    <section class="section section-3"></section>
 
-        <div class="card card-3">
-            <h2>Fun Recent Project</h2>
-            <p>Check out my online collaborative experiment!</p>
-            <div class="project-container">
-                <a href="https://www.youtube.com/@TellyInARoom" target="_blank" rel="noopener noreferrer" class="project-link">
-                    <img src="assets/Telly.jpg" alt="Telly In A Room Project" class="project-image">
-                    <div class="project-overlay">
-                        <span class="project-link-text">Visit YouTube Channel →</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-
-        <div class="card card-4">
-            <h2>Play My Game</h2>
-            <p>Check out my Unity game!</p>
-            <div class="game-link-container">
-                <a href="game.html" class="game-play-button">
-                    <span>Play Game →</span>
-                </a>
-            </div>
-        </div>
-
-        <div class="card card-5" data-audio-src="assets/Feuille_Moi_La_Paix.m4a">
-            <h2>Music</h2>
-            <p>Check out my latest track</p>
-            <div class="audio-player-container">
-                <audio id="music-audio" controls preload="metadata">
-                    <source src="assets/Feuille_Moi_La_Paix.m4a" type="audio/mp4">
-                    Your browser does not support the audio element.
-                </audio>
-            </div>
-        </div>
-    </div>
+    <section class="section section-4"></section>
 
     <script>
-        // Generate random star positions (similar to original SCSS)
+        // Generate random star positions
         function generateStars(count) {
             let shadows = '';
             for (let i = 0; i < count; i++) {
@@ -87,177 +35,6 @@
         document.getElementById('stars').style.boxShadow = generateStars(700);
         document.getElementById('stars2').style.boxShadow = generateStars(200);
         document.getElementById('stars3').style.boxShadow = generateStars(100);
-
-        // Load Instagram post (image or video)
-        function loadInstagramPost() {
-            const card = document.querySelector('.card-2');
-            const imgElement = document.getElementById('instagram-image');
-            const videoElement = document.getElementById('instagram-video');
-            const embedElement = document.getElementById('instagram-embed');
-            const placeholder = document.querySelector('.instagram-placeholder');
-
-            // First, check if there's a direct image/video URL
-            const directMediaUrl = card.getAttribute('data-image-url');
-            if (directMediaUrl && directMediaUrl.trim() !== '') {
-                // Check if it's a video or image
-                if (directMediaUrl.match(/\.(mp4|webm|ogg)$/i)) {
-                    videoElement.src = directMediaUrl;
-                    videoElement.style.display = 'block';
-                    if (placeholder) placeholder.style.display = 'none';
-                } else {
-                    imgElement.src = directMediaUrl;
-                    imgElement.onload = function() {
-                        imgElement.style.display = 'block';
-                        if (placeholder) placeholder.style.display = 'none';
-                    };
-                    imgElement.onerror = function() {
-                        placeholder.textContent = 'Could not load media. Please check the URL.';
-                    };
-                }
-                return;
-            }
-
-            // Check for specific post URL
-            let instagramUrl = card.getAttribute('data-instagram-url');
-            let postId = null;
-
-            // If no specific post, try to get from profile
-            if (!instagramUrl || instagramUrl.trim() === '') {
-                const profileUrl = card.getAttribute('data-instagram-profile');
-                if (profileUrl && profileUrl.trim() !== '') {
-                    // For now, we'll need the specific post URL
-                    // Instagram doesn't provide a public API to get latest post
-                    placeholder.textContent = 'Note: Instagram embeds may not work on localhost due to CORS. Use a direct image/video URL in data-image-url, or this will work once deployed.';
-                    
-                    // Try to use embed with a timeout
-                    setTimeout(function() {
-                        if (embedElement.style.display === 'none' || !embedElement.style.display) {
-                            placeholder.textContent = 'Instagram embed requires HTTPS and may not work on localhost. Try using a direct image/video URL in the data-image-url attribute.';
-                        }
-                    }, 3000);
-                    return;
-                }
-            }
-
-            // Extract post ID from Instagram URL
-            if (instagramUrl) {
-                const postIdMatch = instagramUrl.match(/\/p\/([^\/]+)/);
-                if (postIdMatch) {
-                    postId = postIdMatch[1];
-                }
-            }
-
-            if (!postId) {
-                placeholder.textContent = 'Please provide either a post URL (data-instagram-url) or direct media URL (data-image-url)';
-                    return;
-                }
-            
-            // Use Instagram embed for both images and videos
-            // Note: This may not work on localhost due to CORS restrictions
-            const embedUrl = `https://www.instagram.com/p/${postId}/embed/`;
-            
-            // Set a timeout to detect if embed doesn't load
-            let embedTimeout = setTimeout(function() {
-                if (embedElement.style.display === 'none' || !embedElement.style.display) {
-                    placeholder.innerHTML = 'Instagram embed may not work on localhost.<br>Use a direct image/video URL in <code>data-image-url</code> attribute.<br>This will work once deployed to HTTPS.';
-                }
-            }, 5000);
-            
-            embedElement.onload = function() {
-                clearTimeout(embedTimeout);
-                embedElement.style.display = 'block';
-                if (placeholder) placeholder.style.display = 'none';
-            };
-            
-            embedElement.onerror = function() {
-                clearTimeout(embedTimeout);
-                placeholder.textContent = 'Could not load Instagram post. Instagram embeds require HTTPS and may not work on localhost.';
-            };
-            
-            embedElement.src = embedUrl;
-            
-            // Also try to get thumbnail/preview for faster loading
-            const imageUrl = `https://www.instagram.com/p/${postId}/media/?size=l`;
-            imgElement.onload = function() {
-                // If image loads, show it as preview
-                imgElement.style.display = 'block';
-                if (placeholder) placeholder.style.display = 'none';
-            };
-            imgElement.onerror = function() {
-                // If image fails, rely on embed
-                console.log('Image preview failed (CORS restriction), trying embed');
-            };
-            imgElement.src = imageUrl;
-        }
-
-        // Load Instagram post on page load
-        loadInstagramPost();
-
-        // Load audio player
-        function loadAudioPlayer() {
-            const card = document.querySelector('.card-5');
-            const audioSrc = card.getAttribute('data-audio-src');
-            const audioPlayer = document.getElementById('music-audio');
-            const audioSource = audioPlayer.querySelector('source');
-            const audioContainer = document.querySelector('.audio-player-container');
-
-            if (audioSrc && audioSrc.trim() !== '') {
-                // Set source on both the source element and directly on audio element
-                audioSource.src = audioSrc;
-                audioPlayer.src = audioSrc;
-                
-                // Add error handling
-                audioPlayer.onerror = function(e) {
-                    console.error('Error loading audio:', e);
-                    console.error('Audio source:', audioSrc);
-                    audioContainer.innerHTML = '<p style="color: rgba(255,255,255,0.7); padding: 20px; text-align: center;">Error loading audio file. Please check the file path.</p>';
-                };
-                
-                audioPlayer.onloadeddata = function() {
-                    console.log('Audio loaded successfully');
-                };
-                
-                // Try to load the audio
-                audioPlayer.load();
-                } else {
-                // Hide the audio player if no source is provided
-                audioContainer.style.display = 'none';
-            }
-        }
-
-        // Load audio player when DOM is ready
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', loadAudioPlayer);
-        } else {
-            loadAudioPlayer();
-        }
-
-        // Ensure audio loads after page is ready
-        window.addEventListener('load', function() {
-            const card = document.querySelector('.card-5');
-            const audioSrc = card ? card.getAttribute('data-audio-src') : null;
-            const audioPlayer = document.getElementById('music-audio');
-            
-            if (audioPlayer && audioSrc) {
-                audioPlayer.src = audioSrc;
-                audioPlayer.load();
-                
-                audioPlayer.onerror = function(e) {
-                    console.error('Audio error:', e);
-                    console.error('Trying to load:', audioSrc);
-                    // Try assets folder if audio folder doesn't work
-                    if (audioSrc.includes('audio/')) {
-                        const newSrc = audioSrc.replace('audio/', 'assets/');
-                        audioPlayer.src = newSrc;
-                        audioPlayer.load();
-                    }
-                };
-                
-                audioPlayer.onloadeddata = function() {
-                    console.log('Audio loaded:', audioSrc);
-                };
-            }
-        });
     </script>
 </body>
 </html>
