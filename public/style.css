@@ -7,7 +7,7 @@
 html, body {
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    overflow: auto;
 }
 
 body {
@@ -17,7 +17,10 @@ body {
     margin: 0;
     padding: 0;
     position: relative;
-    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Stars */
@@ -93,10 +96,23 @@ body {
     }
 }
 
+/* Cards Container */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    padding: 40px 20px;
+    max-width: 800px;
+    width: 100%;
+    z-index: 10;
+    position: relative;
+    margin: 0 auto;
+}
+
 /* Cards */
 .card {
-    position: absolute;
-    max-width: 300px;
+    position: relative;
+    width: 100%;
     padding: 24px;
     border-radius: 16px;
     backdrop-filter: blur(20px);
@@ -240,23 +256,8 @@ body {
     font-style: italic;
 }
 
-/* Positioning cards at different spots */
-.card-1 {
-    top: 20%;
-    left: 5%;
-    z-index: 2;
-}
-
-.card-2 {
-    top: 25%;
-    right: 10%;
-    z-index: 3;
-}
-
+/* Card specific styling - subtle rotations for visual interest */
 .card-3 {
-    top: 70%;
-    left: 15%;
-    z-index: 1;
     transform: rotate(-2deg);
 }
 
@@ -265,9 +266,6 @@ body {
 }
 
 .card-4 {
-    bottom: 12%;
-    right: 8%;
-    z-index: 2;
     transform: rotate(1deg);
 }
 
@@ -309,14 +307,11 @@ body {
 }
 
 .card-5 {
-    top: 40%;
-    left: 50%;
-    transform: translateX(-50%) rotate(-1deg);
-    z-index: 1;
+    transform: rotate(-1deg);
 }
 
 .card-5:hover {
-    transform: translateX(-50%) rotate(0deg) translateY(-4px);
+    transform: rotate(0deg) translateY(-4px);
 }
 
 /* Project container */
@@ -421,38 +416,25 @@ body {
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
+    .cards-container {
+        padding: 20px 16px;
+        gap: 20px;
+        max-width: 100%;
+    }
+
     .card {
-        max-width: 250px;
         padding: 20px;
     }
 
-    .card-1 {
-        top: 10%;
-        left: 5%;
-    }
-
-    .card-2 {
-        top: 15%;
-        right: 5%;
-    }
-
-    .card-3 {
-        top: 55%;
-        left: 5%;
-    }
-
-    .card-4 {
-        bottom: 10%;
-        right: 5%;
-    }
-
+    .card-3,
+    .card-4,
     .card-5 {
-        top: 35%;
-        left: 50%;
-        transform: translateX(-50%);
+        transform: none;
     }
 
+    .card-3:hover,
+    .card-4:hover,
     .card-5:hover {
-        transform: translateX(-50%) translateY(-4px);
+        transform: translateY(-4px);
     }
 }

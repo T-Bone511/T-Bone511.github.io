@@ -14,6 +14,63 @@
     <div id="stars2"></div>
     <div id="stars3"></div>
 
+    <div class="cards-container">
+        <div class="card card-1">
+            <h2>WhoAmI?</h2>
+            <p class="whoami-name">Titus Persons</p>
+            <p class="whoami-aka">AKA "The T-Bone" Online</p>
+            <p class="whoami-bio">I'm a 17-year-old Musician, Game Developer, and 3D Artist.</p>
+        </div>
+
+        <div class="card card-2" data-instagram-profile="https://www.instagram.com/titus_persons/" data-instagram-url="https://www.instagram.com/p/DQrjpkMkcgH/" data-image-url="">
+            <h2>Latest Instagram Post</h2>
+            <div class="instagram-container">
+                <div class="instagram-media-wrapper">
+                    <img id="instagram-image" src="" alt="Instagram Post" style="display: none;">
+                    <video id="instagram-video" controls style="display: none;">
+                        Your browser does not support the video tag.
+                    </video>
+                    <iframe id="instagram-embed" src="" frameborder="0" scrolling="no" allowtransparency="true" style="display: none;"></iframe>
+                </div>
+                <p class="instagram-placeholder">Loading Instagram post...</p>
+            </div>
+        </div>
+
+        <div class="card card-3">
+            <h2>Fun Recent Project</h2>
+            <p>Check out my online collaborative experiment!</p>
+            <div class="project-container">
+                <a href="https://www.youtube.com/@TellyInARoom" target="_blank" rel="noopener noreferrer" class="project-link">
+                    <img src="assets/Telly.jpg" alt="Telly In A Room Project" class="project-image">
+                    <div class="project-overlay">
+                        <span class="project-link-text">Visit YouTube Channel →</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="card card-4">
+            <h2>Play My Game</h2>
+            <p>Check out my Unity game!</p>
+            <div class="game-link-container">
+                <a href="game.html" class="game-play-button">
+                    <span>Play Game →</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="card card-5" data-audio-src="assets/Feuille_Moi_La_Paix.m4a">
+            <h2>Music</h2>
+            <p>Check out my latest track</p>
+            <div class="audio-player-container">
+                <audio id="music-audio" controls preload="metadata">
+                    <source src="assets/Feuille_Moi_La_Paix.m4a" type="audio/mp4">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Generate random star positions (similar to original SCSS)
         function generateStars(count) {
@@ -174,64 +231,7 @@
         } else {
             loadAudioPlayer();
         }
-    </script>
-    
-    <div class="card card-1">
-        <h2>WhoAmI?</h2>
-        <p class="whoami-name">Titus Persons</p>
-        <p class="whoami-aka">AKA "The T-Bone" Online</p>
-        <p class="whoami-bio">I'm a 17-year-old Musician, Game Developer, and 3D Artist.</p>
-    </div>
 
-    <div class="card card-2" data-instagram-profile="https://www.instagram.com/titus_persons/" data-instagram-url="https://www.instagram.com/p/DQrjpkMkcgH/" data-image-url="">
-        <h2>Latest Instagram Post</h2>
-        <div class="instagram-container">
-            <div class="instagram-media-wrapper">
-                <img id="instagram-image" src="" alt="Instagram Post" style="display: none;">
-                <video id="instagram-video" controls style="display: none;">
-                    Your browser does not support the video tag.
-                </video>
-                <iframe id="instagram-embed" src="" frameborder="0" scrolling="no" allowtransparency="true" style="display: none;"></iframe>
-            </div>
-            <p class="instagram-placeholder">Loading Instagram post...</p>
-        </div>
-    </div>
-
-    <div class="card card-3">
-        <h2>Fun Recent Project</h2>
-        <p>Check out my online collaborative experiment!</p>
-        <div class="project-container">
-            <a href="https://www.youtube.com/@TellyInARoom" target="_blank" rel="noopener noreferrer" class="project-link">
-                <img src="assets/Telly.jpg" alt="Telly In A Room Project" class="project-image">
-                <div class="project-overlay">
-                    <span class="project-link-text">Visit YouTube Channel →</span>
-                </div>
-            </a>
-        </div>
-    </div>
-
-    <div class="card card-4">
-        <h2>Play My Game</h2>
-        <p>Check out my Unity game!</p>
-        <div class="game-link-container">
-            <a href="game.html" class="game-play-button">
-                <span>Play Game →</span>
-            </a>
-        </div>
-    </div>
-
-    <div class="card card-5" data-audio-src="assets/Feuille_Moi_La_Paix.m4a">
-        <h2>Music</h2>
-        <p>Check out my latest track</p>
-        <div class="audio-player-container">
-            <audio id="music-audio" controls preload="metadata">
-                <source src="assets/Feuille_Moi_La_Paix.m4a" type="audio/mp4">
-                Your browser does not support the audio element.
-            </audio>
-        </div>
-    </div>
-
-    <script>
         // Ensure audio loads after page is ready
         window.addEventListener('load', function() {
             const card = document.querySelector('.card-5');
