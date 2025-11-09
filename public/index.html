@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Website</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -189,6 +189,12 @@
             const container = document.getElementById('threejs-container');
             if (!container) return;
             
+            // Check WebGL support
+            if (!window.WebGLRenderingContext) {
+                console.warn('WebGL not supported. 3D models will not be displayed.');
+                return;
+            }
+            
             // Scene setup
             scene = new THREE.Scene();
             camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -196,10 +202,16 @@
             camera.position.y = 0;
 
             // Renderer setup
-            renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            container.appendChild(renderer.domElement);
+            try {
+                renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                container.appendChild(renderer.domElement);
+                console.log('Three.js renderer initialized successfully');
+            } catch (error) {
+                console.error('Failed to initialize Three.js renderer:', error);
+                return;
+            }
 
             // Lighting
             const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
@@ -238,9 +250,11 @@
                     model.scale.set(0.5, 0.5, 0.5);
                     loadedModels.push(model);
                     modelsLoaded++;
+                    console.log(`Successfully loaded: ${modelFile} (${modelsLoaded}/${totalModels})`);
                     
                     // Once all models are loaded, start spawning
                     if (modelsLoaded === totalModels) {
+                        console.log(`All models loaded. Starting animation with ${loadedModels.length} models.`);
                         // Initialize spawn times with very exaggerated random intervals
                         const now = Date.now();
                         // Create more spawn timers with very random initial times
@@ -250,15 +264,19 @@
                         }
                         animate();
                     }
-                }, undefined, (error) => {
+                }, (progress) => {
+                    // Progress callback - can be used for loading indicators
+                    console.log(`Loading ${modelFile}: ${(progress.loaded / progress.total * 100)}%`);
+                }, (error) => {
                     console.error(`Error loading model ${modelFile}:`, error);
                     modelsLoaded++;
                     
                     // If all models failed or all loaded, start anyway
                     if (modelsLoaded === totalModels) {
+                        console.log(`Model loading complete. ${loadedModels.length} models loaded successfully.`);
                         const now = Date.now();
-                        for (let i = 0; i < 3; i++) {
-                            spawnTimes.push(now + (i * 800));
+                        for (let i = 0; i < 10; i++) {
+                            spawnTimes.push(now + (Math.random() * 8000));
                         }
                         if (loadedModels.length > 0 || modelsLoaded === totalModels) {
                             animate();
