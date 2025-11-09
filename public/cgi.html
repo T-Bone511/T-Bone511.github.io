@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGI/VFX Projects - T-Bone Online</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="overlay-nav">
+        <div class="nav-left">
+            <a href="/" class="nav-link logo-link"><img src="assets/T-Bone logo.png" alt="" class="nav-logo" /></a>
+        </div>
+        <div class="nav-right">
+            <button class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="/" class="mobile-menu-link">Home</a>
+        <a href="music.html" class="mobile-menu-link">Music</a>
+        <a href="games.html" class="mobile-menu-link">Games</a>
+        <a href="cgi.html" class="mobile-menu-link">CGI/VFX</a>
+        <a href="other.html" class="mobile-menu-link">Other Projects</a>
+        <a href="/#contact" class="mobile-menu-link">Contact</a>
+    </div>
+
+    <section class="section section-3">
+        <h2 class="section-heading">CGI/VFX Projects</h2>
+        <div class="project-cards-container">
+            <div class="project-card">
+                <div class="project-card-header">
+                    <h3 class="project-card-title">3D Donut Render</h3>
+                </div>
+                <div class="project-card-divider"></div>
+                <p class="project-card-description">A photorealistic donut created in Blender following the famous Blender Guru tutorial. Features realistic materials, lighting, and composition. This project helped me master the fundamentals of 3D modeling and rendering.</p>
+                <div class="project-card-divider"></div>
+                <div class="project-card-meta">
+                    <span class="project-tag">Blender</span>
+                    <span class="project-tag">Photorealistic</span>
+                    <span class="project-tag">2024</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-card-header">
+                    <h3 class="project-card-title">Sci-Fi Environment</h3>
+                </div>
+                <div class="project-card-divider"></div>
+                <p class="project-card-description">A futuristic space station interior with detailed modeling, procedural textures, and atmospheric lighting. Created for a client project showcasing advanced Blender techniques including particle systems and volumetrics.</p>
+                <div class="project-card-divider"></div>
+                <div class="project-card-meta">
+                    <span class="project-tag">Blender</span>
+                    <span class="project-tag">Environment</span>
+                    <span class="project-tag">2024</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-card-header">
+                    <h3 class="project-card-title">Product Visualization</h3>
+                </div>
+                <div class="project-card-divider"></div>
+                <p class="project-card-description">Commercial product renders for various clients, focusing on clean lighting, accurate materials, and professional presentation. Includes both still images and animated turntables.</p>
+                <div class="project-card-divider"></div>
+                <div class="project-card-meta">
+                    <span class="project-tag">Blender</span>
+                    <span class="project-tag">Commercial</span>
+                    <span class="project-tag">2023-2024</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-card-header">
+                    <h3 class="project-card-title">Abstract Motion Graphics</h3>
+                </div>
+                <div class="project-card-divider"></div>
+                <p class="project-card-description">Experimental abstract renders exploring form, color, and motion. These pieces combine procedural generation with manual sculpting to create unique visual experiences.</p>
+                <div class="project-card-divider"></div>
+                <div class="project-card-meta">
+                    <span class="project-tag">Blender</span>
+                    <span class="project-tag">Abstract</span>
+                    <span class="project-tag">2024</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Hamburger menu toggle
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        function toggleMenu() {
+            hamburgerMenu.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+        }
+
+        hamburgerMenu.addEventListener('click', toggleMenu);
+        menuOverlay.addEventListener('click', toggleMenu);
+
+        // Close menu when clicking on a link
+        const menuLinks = document.querySelectorAll('.mobile-menu-link');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerMenu.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
+
