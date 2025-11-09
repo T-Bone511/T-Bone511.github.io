@@ -43,11 +43,15 @@ body {
 .section-4 {
     width: 100vw;
     background-color: #000000;
-    /* Extend into safe areas */
+    /* Extend background into safe areas (behind notch/home indicator) */
     margin-left: calc(-1 * env(safe-area-inset-left, 0px));
     margin-right: calc(-1 * env(safe-area-inset-right, 0px));
+    margin-top: calc(-1 * env(safe-area-inset-top, 0px));
+    margin-bottom: calc(-1 * env(safe-area-inset-bottom, 0px));
     padding-left: env(safe-area-inset-left, 0px);
     padding-right: env(safe-area-inset-right, 0px);
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 /* Overlay Navigation */
@@ -222,17 +226,23 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Extend into safe areas to prevent white borders */
+    /* Extend background into safe areas to prevent white borders */
     margin-left: calc(-1 * env(safe-area-inset-left, 0px));
     margin-right: calc(-1 * env(safe-area-inset-right, 0px));
+    margin-top: calc(-1 * env(safe-area-inset-top, 0px));
+    margin-bottom: calc(-1 * env(safe-area-inset-bottom, 0px));
     padding-left: env(safe-area-inset-left, 0px);
     padding-right: env(safe-area-inset-right, 0px);
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 .section-1 {
     background: radial-gradient(ellipse at bottom, #07305f 0%, #090A0F 100%);
     background-color: #090A0F;
     position: relative;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 #threejs-container {
@@ -286,6 +296,7 @@ body {
 
 .section-2 {
     background: #1a1a2e;
+    background-attachment: fixed;
     background-image: 
         linear-gradient(to right, rgba(0, 81, 212, 0.3) 0%, transparent 20%, transparent 80%, rgba(0, 81, 212, 0.3) 100%),
         linear-gradient(rgba(0, 157, 255, 0.288) 1px, transparent 1px),
@@ -348,6 +359,7 @@ body {
 
 .section-3 {
     background: #16213e;
+    background-attachment: fixed;
     align-items: flex-start;
     padding-top: clamp(40px, 8vw, 80px);
     flex-direction: column;
@@ -569,6 +581,7 @@ body {
 
 .section-4 {
     background: #0f3460;
+    background-attachment: fixed;
     align-items: flex-start;
     padding-top: clamp(40px, 8vw, 80px);
     padding-bottom: clamp(40px, 8vw, 80px);
