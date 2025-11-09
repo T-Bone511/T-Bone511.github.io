@@ -226,7 +226,117 @@ body {
     padding-top: 80px;
     flex-direction: column;
     justify-content: flex-start;
-    min-height: 150vh;
+    min-height: 100vh;
+}
+
+.cards-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 0;
+    row-gap: 0;
+    padding: 40px 12%;
+    max-width: 100%;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: 3 / 4;
+    border-radius: 16px;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+        0 12px 48px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+}
+
+.card-1 {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.card-2 {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.card-3 {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.card-4 {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.card-top-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.card-image-wrapper {
+    width: 50%;
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-title-wrapper {
+    width: 50%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    color: #ffffff;
+    font-family: 'Arial Black', 'Helvetica Neue', Arial, sans-serif;
+    text-align: center;
+}
+
+.card-divider {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+    margin: 10px 0;
+}
+
+.card-paragraph {
+    width: 100%;
+    padding: 20px;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: left;
+    flex: 1;
+}
+
+.card-paragraph-short {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    flex: 0;
 }
 
 .work-boxes-container {
@@ -236,13 +346,13 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     padding: 40px 12%;
-    gap: 30px;
-    min-height: calc(150vh - 200px);
+    gap: 60px;
+    min-height: calc(220vh - 200px);
 }
 
 .work-row {
     width: 100%;
-    height: calc((150vh - 300px) / 4);
+    height: calc((220vh - 300px) / 4);
     display: flex;
     gap: 30px;
     align-items: stretch;
@@ -275,7 +385,8 @@ body {
 
 .work-rectangle {
     flex: 1;
-    height: 100%;
+    height: 85%;
+    align-self: center;
     padding: 30px;
     background: linear-gradient(
         135deg,
@@ -328,6 +439,15 @@ body {
     font-size: 2.5rem;
 }
 
+@media (max-width: 1024px) {
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 40px 5%;
+        column-gap: 0;
+        row-gap: 0;
+    }
+}
+
 @media (max-width: 768px) {
     .section-heading {
         font-size: 2.5rem;
@@ -343,14 +463,29 @@ body {
         padding-top: 60px;
     }
 
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 20px;
+        column-gap: 0;
+        row-gap: 0;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+    }
+
+    .card-paragraph {
+        font-size: 0.9rem;
+    }
+
     .work-boxes-container {
         padding: 20px;
-        gap: 20px;
-        min-height: calc(150vh - 150px);
+        gap: 40px;
+        min-height: calc(220vh - 150px);
     }
 
     .work-row {
-        height: calc((150vh - 250px) / 4);
+        height: calc((220vh - 250px) / 4);
         gap: 15px;
         flex-direction: column;
     }
@@ -599,22 +734,6 @@ body {
     font-style: italic;
 }
 
-/* Card specific styling - subtle rotations for visual interest */
-.card-3 {
-    transform: rotate(-2deg);
-}
-
-.card-3:hover {
-    transform: rotate(0deg) translateY(-4px);
-}
-
-.card-4 {
-    transform: rotate(1deg);
-}
-
-.card-4:hover {
-    transform: rotate(0deg) translateY(-4px);
-}
 
 /* Game link button */
 .game-link-container {
