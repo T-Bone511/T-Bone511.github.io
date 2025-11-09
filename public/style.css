@@ -11,22 +11,29 @@ html {
     background-color: #000000;
     margin: 0;
     padding: 0;
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 body {
     width: 100%;
     height: 100%;
     overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     background-color: #000000;
     margin: 0;
     padding: 0;
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     font-family: system-ui, -apple-system, sans-serif;
     color: #ffffff;
-    position: relative;
 }
 
 /* Overlay Navigation */
@@ -197,6 +204,7 @@ body {
 .section {
     width: 100%;
     min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height for mobile */
     min-height: -webkit-fill-available;
     position: relative;
     display: flex;
