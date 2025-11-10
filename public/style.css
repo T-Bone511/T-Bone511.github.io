@@ -11,10 +11,19 @@ html {
     background-color: #000000;
     margin: 0;
     padding: 0;
-    /* Extend black background to full viewport including safe areas */
-    padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
-    /* Extend background beyond safe areas using negative margins */
-    margin: calc(-1 * env(safe-area-inset-top, 0px)) calc(-1 * env(safe-area-inset-right, 0px)) calc(-1 * env(safe-area-inset-bottom, 0px)) calc(-1 * env(safe-area-inset-left, 0px));
+    position: relative;
+}
+
+/* Create a full-screen black background that extends into safe areas */
+html::before {
+    content: '';
+    position: fixed;
+    top: calc(-1 * env(safe-area-inset-top, 0px));
+    left: calc(-1 * env(safe-area-inset-left, 0px));
+    right: calc(-1 * env(safe-area-inset-right, 0px));
+    bottom: calc(-1 * env(safe-area-inset-bottom, 0px));
+    background-color: #000000;
+    z-index: -1;
 }
 
 body {
@@ -28,6 +37,7 @@ body {
     padding: 0;
     font-family: system-ui, -apple-system, sans-serif;
     color: #ffffff;
+    position: relative;
 }
 
 /* Ensure all sections fill the viewport and extend into safe areas */
