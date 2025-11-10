@@ -16,15 +16,10 @@ html {
     left: 0;
     right: 0;
     bottom: 0;
-    /* Extend background into safe areas */
-    margin-left: calc(-1 * env(safe-area-inset-left, 0px));
-    margin-right: calc(-1 * env(safe-area-inset-right, 0px));
-    margin-top: calc(-1 * env(safe-area-inset-top, 0px));
-    margin-bottom: calc(-1 * env(safe-area-inset-bottom, 0px));
-    padding-left: env(safe-area-inset-left, 0px);
-    padding-right: env(safe-area-inset-right, 0px);
-    padding-top: env(safe-area-inset-top, 0px);
-    padding-bottom: env(safe-area-inset-bottom, 0px);
+    /* Extend black background to full viewport including safe areas */
+    padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+    /* Extend background beyond safe areas using negative margins */
+    margin: calc(-1 * env(safe-area-inset-top, 0px)) calc(-1 * env(safe-area-inset-right, 0px)) calc(-1 * env(safe-area-inset-bottom, 0px)) calc(-1 * env(safe-area-inset-left, 0px));
 }
 
 body {
